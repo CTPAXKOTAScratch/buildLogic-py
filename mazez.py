@@ -124,8 +124,8 @@ def print_maze(grid, path, spawn, goal):
     bg = Colors.BG_DARK
     wall = Colors.WHITE + "██"
     path_ch = Colors.CYAN + "██"
-    spawn_ch = Colors.GREEN + Colors.BOLD + "S" + Colors.RESET + bg
-    goal_ch = Colors.YELLOW + Colors.BOLD + "G" + Colors.RESET + bg
+    spawn_ch = Colors.GREEN + Colors.BOLD + "SS" + Colors.RESET + bg
+    goal_ch = Colors.YELLOW + Colors.BOLD + "GG" + Colors.RESET + bg
     highlight = Colors.MAGENTA + Colors.BOLD + "██" + Colors.RESET + bg
 
     render = [['#' if c == 1 else ' ' for c in row] for row in grid]
@@ -244,6 +244,7 @@ def build_maze(builder):
 
     spawn_cell = center_farthest(raw)
     goal_cell = farthest_cell(raw, *spawn_cell)
+    spawn_cell = farthest_cell(raw, *goal_cell)
 
     sx_vals = cell_center(spawn_cell[0], hw)
     sz_vals = cell_center(spawn_cell[1], hw)
